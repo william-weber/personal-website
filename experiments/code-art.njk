@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+title: Algorithmic Visuals
+permalink: /experiments/code-art/
+---
+
+{% set section = experiments.sections[1] %}
+
+<section class="space-y-8">
+  <header class="space-y-3">
+    <p class="text-sm"><a href="/experiments/" class="text-ink-300 hover:text-ink-200">← Experiments</a></p>
+    <h1 class="text-3xl font-semibold tracking-tight text-ink-100">{{ section.title }}</h1>
+    <p class="text-[var(--color-muted)]">{{ section.blurb }}</p>
+  </header>
+
+  {% if section.items and section.items.length %}
+    <ul class="space-y-6">
+      {% for item in section.items %}
+        <li class="border border-ink-800/60 rounded-lg p-5 space-y-2">
+          <h3 class="font-medium text-ink-200">{{ item.title }}</h3>
+          {% if item.note %}<p class="text-sm text-[var(--color-muted)]">{{ item.note }}</p>{% endif %}
+          {% if item.href %}<p class="text-sm"><a href="{{ item.href }}" class="text-ink-300 hover:text-ink-200">Open →</a></p>{% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-[var(--color-muted)] italic">Nothing here yet. Coming soon.</p>
+  {% endif %}
+</section>

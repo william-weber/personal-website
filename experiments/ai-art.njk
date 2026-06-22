@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+title: AI-Generated Art
+permalink: /experiments/ai-art/
+---
+
+{% set section = experiments.sections[0] %}
+
+<section class="space-y-8">
+  <header class="space-y-3">
+    <p class="text-sm"><a href="/experiments/" class="text-ink-300 hover:text-ink-200">← Experiments</a></p>
+    <h1 class="text-3xl font-semibold tracking-tight text-ink-100">{{ section.title }}</h1>
+    <p class="text-[var(--color-muted)]">{{ section.blurb }}</p>
+  </header>
+
+  {% if section.items and section.items.length %}
+    <ul class="grid gap-6 sm:grid-cols-2">
+      {% for item in section.items %}
+        <li class="border border-ink-800/60 rounded-lg overflow-hidden">
+          {% if item.image %}<img src="{{ item.image }}" alt="{{ item.title }}" class="w-full" />{% endif %}
+          <div class="p-4 space-y-1">
+            <h3 class="font-medium text-ink-200">{{ item.title }}</h3>
+            {% if item.note %}<p class="text-sm text-[var(--color-muted)]">{{ item.note }}</p>{% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-[var(--color-muted)] italic">Nothing here yet. Coming soon.</p>
+  {% endif %}
+</section>

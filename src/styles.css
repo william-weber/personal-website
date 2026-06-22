@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@source "../**/*.{njk,html,md}";
+@source "../_data/**/*.json";
+
+@theme {
+  --color-ink-50:  #eef0fb;
+  --color-ink-100: #d3d8f3;
+  --color-ink-200: #a7b1e7;
+  --color-ink-300: #7b8adb;
+  --color-ink-400: #4f63cf;
+  --color-ink-500: #2f47b8;
+  --color-ink-600: #1a2781;
+  --color-ink-700: #151f66;
+  --color-ink-800: #10174c;
+  --color-ink-900: #0a0f33;
+  --color-ink-950: #05081a;
+
+  --color-bg:      #0a0a0b;
+  --color-surface: #131316;
+  --color-fg:      #e7e7ea;
+  --color-muted:   #8a8a93;
+  --color-accent:  #1a2781;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+  }
+  a {
+    color: var(--color-ink-300);
+  }
+  a:hover {
+    color: var(--color-ink-200);
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "headline": "Hi, I'm Will.",
+  "bio": [
+    "I've been programming since 2004 and doing it professionally for over a decade. I'm interested in the parts of computing that feel a little bit like magic: algorithmic visuals, generative systems, and tools that turn slow human decisions into fast ones.",
+    "This site is a place to keep the smaller experiments visible and to track the bigger projects as they come together."
+  ],
+  "links": [
+    { "label": "GitHub", "href": "https://github.com/william-weber" }
+  ]
+}

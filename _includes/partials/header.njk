@@ -1,0 +1,19 @@
+<header class="border-b border-ink-800/60">
+  <div class="mx-auto w-full max-w-3xl px-6 py-5 flex items-center justify-between">
+    <a href="/" class="text-ink-200 hover:text-ink-100 font-semibold tracking-tight">
+      {{ site.title }}
+    </a>
+    <nav>
+      <ul class="flex gap-6 text-sm">
+        {% for item in site.nav %}
+          <li>
+            <a href="{{ item.href }}"
+               class="{% if page.url and page.url.indexOf(item.href) === 0 %}text-ink-100{% else %}text-[var(--color-muted)] hover:text-ink-200{% endif %}">
+              {{ item.label }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

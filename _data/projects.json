@@ -1,0 +1,16 @@
+{
+  "headline": "Projects",
+  "blurb": "Bigger work, in progress. Detailed pages coming as each settles.",
+  "items": [
+    {
+      "title": "Auspicious Times",
+      "status": "in progress",
+      "blurb": "An algorithmic assistant for choosing astrologically auspicious moments."
+    },
+    {
+      "title": "VR Phone Tracker",
+      "status": "in progress",
+      "blurb": "An app for keeping track of your phone while you're in VR."
+    }
+  ]
+}

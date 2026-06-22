@@ -1,0 +1,16 @@
+{
+  "title": "Will Weber",
+  "tagline": "Programmer. Tinkerer. Occasional astrologer.",
+  "url": "https://example.pages.dev",
+  "nav": [
+    { "label": "About", "href": "/about/" },
+    { "label": "Experiments", "href": "/experiments/" },
+    { "label": "Projects", "href": "/projects/" }
+  ],
+  "footer": {
+    "year": 2026,
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/william-weber" }
+    ]
+  }
+}

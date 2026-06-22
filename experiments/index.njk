@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+title: Experiments
+permalink: /experiments/
+---
+
+<section class="space-y-8">
+  <header class="space-y-3">
+    <h1 class="text-3xl font-semibold tracking-tight text-ink-100">{{ experiments.headline }}</h1>
+    <p class="text-[var(--color-muted)]">{{ experiments.blurb }}</p>
+  </header>
+
+  <ul class="space-y-6">
+    {% for section in experiments.sections %}
+      <li class="border border-ink-800/60 rounded-lg p-5 hover:border-ink-600 transition-colors">
+        <a href="/experiments/{{ section.slug }}/" class="block space-y-2">
+          <h2 class="text-xl font-medium text-ink-200">{{ section.title }}</h2>
+          <p class="text-sm text-[var(--color-muted)]">{{ section.blurb }}</p>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>

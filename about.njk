@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+title: About
+permalink: /about/
+---
+
+<article class="space-y-6">
+  <h1 class="text-3xl font-semibold tracking-tight text-ink-100">{{ about.headline }}</h1>
+
+  <div class="space-y-4 leading-relaxed">
+    {% for para in about.bio %}
+      <p>{{ para }}</p>
+    {% endfor %}
+  </div>
+
+  {% if about.links and about.links.length %}
+    <ul class="pt-4 flex flex-wrap gap-4 text-sm">
+      {% for link in about.links %}
+        <li><a href="{{ link.href }}" class="text-ink-300 hover:text-ink-200">{{ link.label }} →</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</article>

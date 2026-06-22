@@ -1,0 +1,18 @@
+{
+  "headline": "Experiments",
+  "blurb": "Small, finished-ish things. Not production. Just play.",
+  "sections": [
+    {
+      "slug": "ai-art",
+      "title": "AI-Generated Art",
+      "blurb": "Pieces and prompts from ongoing experiments with generative image models.",
+      "items": []
+    },
+    {
+      "slug": "code-art",
+      "title": "Algorithmic Visuals",
+      "blurb": "Cellular automata, reaction-diffusion, and other small visual algorithms.",
+      "items": []
+    }
+  ]
+}
