@@ -4,21 +4,54 @@ title: Projects
 permalink: /projects/
 ---
 
-<section class="space-y-8">
-  <header class="space-y-3">
-    <h1 class="text-3xl font-semibold tracking-tight text-ink-100">{{ projects.headline }}</h1>
-    <p class="text-[var(--color-muted)]">{{ projects.blurb }}</p>
-  </header>
+{% set projectTitles = {
+  "Auspicious Times": "Auspicious<br/>Times",
+  "VR Phone Tracker": "VR Phone<br/>Tracker"
+} %}
 
-  <ul class="space-y-6">
+{% import "partials/section-marker.njk" as marker %}
+
+<div class="pt-20 pb-16">
+  {{ marker.sectionMarker("03", "projects") }}
+
+  <h1
+    class="font-sans m-0 mb-4"
+    style="font-weight: 100; font-size: clamp(56px, 8vw, 96px); line-height: 0.95; letter-spacing: -0.035em; color: var(--color-fg-strong);"
+  >
+    Projects
+  </h1>
+  <p
+    class="font-mono text-[12.5px] tracking-[0.02em] m-0 mb-14"
+    style="color: var(--color-muted);"
+  >bigger work, in progress · detailed pages coming as each settles</p>
+
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 border"
+    style="gap: 1px; background: var(--color-hairline); border-color: var(--color-hairline);"
+  >
     {% for item in projects.items %}
-      <li class="border border-ink-800/60 rounded-lg p-5 space-y-2">
-        <div class="flex items-baseline justify-between gap-4 flex-wrap">
-          <h2 class="text-xl font-medium text-ink-200">{{ item.title }}</h2>
-          <span class="text-xs uppercase tracking-wider text-[var(--color-muted)]">{{ item.status }}</span>
+      <div
+        class="ww-card flex flex-col gap-5 min-h-[220px]"
+        style="background: rgba(12,22,56,0.6); padding: 32px;"
+      >
+        <div class="flex justify-between items-start">
+          <span class="font-mono text-[10.5px] tracking-[0.12em]" style="color: var(--color-accent);">/ {% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+          <span
+            class="font-mono text-[10px] tracking-[0.10em] uppercase inline-flex items-center gap-2"
+            style="color: var(--color-status-progress);"
+          >
+            <span class="pulse-soft inline-block w-[5px] h-[5px] rounded-full" style="background: var(--color-status-progress);"></span>
+            {{ item.status }}
+          </span>
         </div>
-        <p class="text-sm">{{ item.blurb }}</p>
-      </li>
+        <div class="flex-1">
+          <div
+            class="font-sans text-[28px] mb-3"
+            style="font-weight: 200; letter-spacing: -0.02em; line-height: 1.05; color: var(--color-fg-strong);"
+          >{{ projectTitles[item.title] | safe if projectTitles[item.title] else item.title }}</div>
+          <div class="text-[13px] leading-[1.6]" style="color: var(--color-muted);">{{ item.blurb }}</div>
+        </div>
+      </div>
     {% endfor %}
-  </ul>
-</section>
+  </div>
+</div>

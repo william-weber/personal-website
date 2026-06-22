@@ -1,0 +1,9 @@
+{% macro sectionMarker(index, label) %}
+<div
+  class="font-mono text-[10.5px] tracking-[0.12em] uppercase mb-8 flex items-center gap-3"
+  style="color: var(--color-faint);"
+>
+  <span class="inline-block w-6 h-px" style="background: var(--color-accent-soft);"></span>
+  <span>index / {{ index }} — {{ label }}</span>
+</div>
+{% endmacro %}

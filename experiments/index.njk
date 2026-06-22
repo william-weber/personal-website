@@ -4,20 +4,39 @@ title: Experiments
 permalink: /experiments/
 ---
 
-<section class="space-y-8">
-  <header class="space-y-3">
-    <h1 class="text-3xl font-semibold tracking-tight text-ink-100">{{ experiments.headline }}</h1>
-    <p class="text-[var(--color-muted)]">{{ experiments.blurb }}</p>
-  </header>
+{% import "partials/section-marker.njk" as marker %}
 
-  <ul class="space-y-6">
+<div class="pt-20 pb-16">
+  {{ marker.sectionMarker("02", "experiments") }}
+
+  <h1
+    class="font-sans m-0 mb-4"
+    style="font-weight: 100; font-size: clamp(56px, 8vw, 96px); line-height: 0.95; letter-spacing: -0.035em; color: var(--color-fg-strong);"
+  >
+    Experiments
+  </h1>
+  <p
+    class="font-mono text-[12.5px] tracking-[0.02em] m-0 mb-14"
+    style="color: var(--color-muted);"
+  >small, finished-ish things · not production · just play</p>
+
+  <div class="flex flex-col border-t" style="border-color: var(--color-hairline-strong);">
     {% for section in experiments.sections %}
-      <li class="border border-ink-800/60 rounded-lg p-5 hover:border-ink-600 transition-colors">
-        <a href="/experiments/{{ section.slug }}/" class="block space-y-2">
-          <h2 class="text-xl font-medium text-ink-200">{{ section.title }}</h2>
-          <p class="text-sm text-[var(--color-muted)]">{{ section.blurb }}</p>
-        </a>
-      </li>
+      <a
+        href="/experiments/{{ section.slug }}/"
+        class="ww-row grid items-center gap-6 py-7 border-b"
+        style="grid-template-columns: 60px 1fr 200px 24px; border-color: var(--color-hairline-strong);"
+      >
+        <span class="font-mono text-[11px] tracking-[0.12em]" style="color: var(--color-accent);">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+        <div>
+          <div class="font-sans text-[20px] mb-1.5" style="font-weight: 200; letter-spacing: -0.01em; color: var(--color-fg-strong);">{{ section.title }}</div>
+          <div class="text-[13px] leading-[1.5]" style="color: var(--color-muted);">{{ section.blurb }}</div>
+        </div>
+        <div class="font-mono text-[10.5px] tracking-[0.10em] uppercase" style="color: var(--color-faint);">
+          <span class="inline-block w-[5px] h-[5px] rounded-full mr-2 align-middle" style="background: var(--color-status-online);"></span>active
+        </div>
+        <span class="ww-card-arrow font-mono transition-all duration-150 opacity-50" style="color: var(--color-accent);">→</span>
+      </a>
     {% endfor %}
-  </ul>
-</section>
+  </div>
+</div>

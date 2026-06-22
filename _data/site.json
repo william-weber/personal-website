@@ -3,14 +3,17 @@
   "tagline": "Programmer. Tinkerer. Occasional astrologer.",
   "url": "https://example.pages.dev",
   "nav": [
-    { "label": "About", "href": "/about/" },
-    { "label": "Experiments", "href": "/experiments/" },
-    { "label": "Projects", "href": "/projects/" }
+    { "index": "01", "label": "about", "href": "/about/" },
+    { "index": "02", "label": "experiments", "href": "/experiments/" },
+    { "index": "03", "label": "projects", "href": "/projects/" }
   ],
+  "telemetry": {
+    "coordinates": "lat 40.7128°N   lon −74.0060°W",
+    "version": "v 2.1.0"
+  },
   "footer": {
     "year": 2026,
-    "links": [
-      { "label": "GitHub", "href": "https://github.com/william-weber" }
-    ]
+    "tagline": "all systems nominal",
+    "github": "https://github.com/william-weber"
   }
 }

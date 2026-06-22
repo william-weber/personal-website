@@ -1,10 +1,22 @@
-<footer class="border-t border-ink-800/60 mt-16">
-  <div class="mx-auto w-full max-w-3xl px-6 py-6 flex flex-wrap items-center justify-between gap-3 text-sm text-[var(--color-muted)]">
-    <span>© {{ site.footer.year }} {{ site.title }}</span>
-    <ul class="flex gap-4">
-      {% for link in site.footer.links %}
-        <li><a href="{{ link.href }}" class="hover:text-ink-200">{{ link.label }}</a></li>
-      {% endfor %}
-    </ul>
+<footer
+  class="px-8 h-10 flex items-center justify-between border-t font-mono text-[10.5px] font-normal tracking-[0.06em] uppercase"
+  style="border-color: var(--color-hairline); color: var(--color-telemetry);"
+>
+  <div class="flex items-center gap-4">
+    <span>© {{ site.footer.year }} will weber</span>
+    <span class="opacity-40">·</span>
+    <span style="color: var(--color-faint);">{{ site.footer.tagline }}</span>
+  </div>
+  <div class="flex items-center gap-4">
+    <a
+      href="{{ site.footer.github }}"
+      class="inline-flex items-center gap-1.5 transition-colors duration-150 hover:[color:var(--color-fg)]"
+      style="color: var(--color-muted);"
+    >
+      github
+      <span style="color: var(--color-accent);">↗</span>
+    </a>
+    <span class="opacity-40">·</span>
+    <span>end of transmission<span class="blink-cursor" style="color: var(--color-accent);">_</span></span>
   </div>
 </footer>

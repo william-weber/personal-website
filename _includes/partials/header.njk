@@ -1,19 +1,57 @@
-<header class="border-b border-ink-800/60">
-  <div class="mx-auto w-full max-w-3xl px-6 py-5 flex items-center justify-between">
-    <a href="/" class="text-ink-200 hover:text-ink-100 font-semibold tracking-tight">
-      {{ site.title }}
-    </a>
-    <nav>
-      <ul class="flex gap-6 text-sm">
-        {% for item in site.nav %}
-          <li>
-            <a href="{{ item.href }}"
-               class="{% if page.url and page.url.indexOf(item.href) === 0 %}text-ink-100{% else %}text-[var(--color-muted)] hover:text-ink-200{% endif %}">
-              {{ item.label }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </div>
+{# derive top-level section slug from page.url #}
+{% set urlPath = page.url or "/" %}
+{% if urlPath == "/" %}
+  {% set sectionSlug = "index" %}
+{% elif urlPath.startsWith("/about") %}
+  {% set sectionSlug = "about" %}
+{% elif urlPath.startsWith("/experiments") %}
+  {% set sectionSlug = "experiments" %}
+{% elif urlPath.startsWith("/projects") %}
+  {% set sectionSlug = "projects" %}
+{% else %}
+  {% set sectionSlug = "index" %}
+{% endif %}
+
+<header
+  class="px-8 h-11 flex items-center justify-between border-b"
+  style="border-color: var(--color-hairline);"
+>
+  <a href="/" class="flex items-center gap-3.5 select-none">
+    {# mark #}
+    <span
+      class="relative w-[18px] h-[18px] grid place-items-center"
+      style="border: 1px solid rgba(150,180,255,0.35);"
+      aria-hidden="true"
+    >
+      <span class="absolute inset-[3px]" style="border: 1px solid rgba(150,180,255,0.55);"></span>
+      <span
+        class="absolute w-1 h-1"
+        style="background: var(--color-accent); box-shadow: 0 0 6px rgba(122,160,255,0.8);"
+      ></span>
+    </span>
+    <span class="text-[13px] font-normal tracking-[0.02em]" style="color: var(--color-fg);">{{ site.title }}</span>
+    <span
+      class="font-mono text-[10px] tracking-[0.06em] uppercase pl-3.5 border-l"
+      style="color: var(--color-faint); border-color: var(--color-hairline);"
+    >/ {{ sectionSlug }}</span>
+  </a>
+
+  <nav class="flex items-center gap-1 font-mono text-[11px] tracking-[0.06em] uppercase">
+    {% for item in site.nav %}
+      {% set active = (urlPath == item.href) or (item.href != "/" and urlPath.startsWith(item.href)) %}
+      <a
+        href="{{ item.href }}"
+        class="relative px-3.5 py-1.5 transition-colors duration-150 hover:[color:var(--color-fg)]"
+        style="color: {% if active %}var(--color-fg){% else %}var(--color-faint){% endif %};"
+      >
+        <span class="mr-2" style="color: var(--color-faint);">{{ item.index }}</span>{{ item.label }}
+        {% if active %}
+          <span
+            class="absolute left-3.5 right-3.5 h-px"
+            style="bottom: -1px; background: var(--color-accent);"
+          ></span>
+        {% endif %}
+      </a>
+    {% endfor %}
+  </nav>
 </header>

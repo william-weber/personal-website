@@ -6,26 +6,42 @@ permalink: /experiments/ai-art/
 
 {% set section = experiments.sections[0] %}
 
-<section class="space-y-8">
-  <header class="space-y-3">
-    <p class="text-sm"><a href="/experiments/" class="text-ink-300 hover:text-ink-200">← Experiments</a></p>
-    <h1 class="text-3xl font-semibold tracking-tight text-ink-100">{{ section.title }}</h1>
-    <p class="text-[var(--color-muted)]">{{ section.blurb }}</p>
-  </header>
+{% import "partials/section-marker.njk" as marker %}
+
+<div class="pt-20 pb-16 max-w-[860px]">
+  {{ marker.sectionMarker("02 / 01", section.title) }}
+
+  <div class="mb-3 font-mono text-[11px] tracking-[0.08em] uppercase">
+    <a href="/experiments/" style="color: var(--color-faint);" class="hover:[color:var(--color-fg)]">← experiments</a>
+  </div>
+
+  <h1
+    class="font-sans m-0 mb-4"
+    style="font-weight: 100; font-size: clamp(48px, 7vw, 80px); line-height: 0.95; letter-spacing: -0.03em; color: var(--color-fg-strong);"
+  >
+    {{ section.title }}<span style="color: var(--color-accent);">.</span>
+  </h1>
+  <p class="font-mono text-[12.5px] tracking-[0.02em] m-0 mb-14" style="color: var(--color-muted);">{{ section.blurb }}</p>
 
   {% if section.items and section.items.length %}
-    <ul class="grid gap-6 sm:grid-cols-2">
+    <div class="grid grid-cols-1 sm:grid-cols-2 border" style="gap: 1px; background: var(--color-hairline); border-color: var(--color-hairline);">
       {% for item in section.items %}
-        <li class="border border-ink-800/60 rounded-lg overflow-hidden">
-          {% if item.image %}<img src="{{ item.image }}" alt="{{ item.title }}" class="w-full" />{% endif %}
-          <div class="p-4 space-y-1">
-            <h3 class="font-medium text-ink-200">{{ item.title }}</h3>
-            {% if item.note %}<p class="text-sm text-[var(--color-muted)]">{{ item.note }}</p>{% endif %}
+        <div class="ww-card" style="background: rgba(12,22,56,0.6);">
+          {% if item.image %}<img src="{{ item.image }}" alt="{{ item.title }}" class="w-full block" />{% endif %}
+          <div class="p-5">
+            <div class="font-sans text-[18px] mb-1" style="font-weight: 200; color: var(--color-fg-strong);">{{ item.title }}</div>
+            {% if item.note %}<div class="text-[12.5px]" style="color: var(--color-muted);">{{ item.note }}</div>{% endif %}
           </div>
-        </li>
+        </div>
       {% endfor %}
-    </ul>
+    </div>
   {% else %}
-    <p class="text-[var(--color-muted)] italic">Nothing here yet. Coming soon.</p>
+    <div
+      class="py-10 px-7 border font-mono text-[11px] tracking-[0.10em] uppercase flex items-center gap-3"
+      style="border-color: var(--color-hairline-strong); color: var(--color-faint);"
+    >
+      <span class="inline-block w-[5px] h-[5px] rounded-full pulse-soft" style="background: var(--color-status-progress);"></span>
+      <span>standby — nothing in this channel yet</span>
+    </div>
   {% endif %}
-</section>
+</div>

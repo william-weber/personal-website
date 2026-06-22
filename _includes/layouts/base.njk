@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% if title %}{{ title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="description" content="{{ description or site.tagline }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css" />
   </head>
-  <body class="min-h-screen flex flex-col bg-[var(--color-bg)] text-[var(--color-fg)] font-sans antialiased">
+  <body class="min-h-screen flex flex-col">
+    {% include "partials/telemetry.njk" %}
     {% include "partials/header.njk" %}
-    <main class="flex-1 mx-auto w-full max-w-3xl px-6 py-12">
+    <main class="flex-1 relative w-full max-w-[1200px] mx-auto box-border px-8">
+      {# corner crosshairs #}
+      <span aria-hidden="true" class="pointer-events-none absolute top-4 left-4 w-2 h-2 border-t border-l" style="border-color: var(--color-accent-soft);"></span>
+      <span aria-hidden="true" class="pointer-events-none absolute top-4 right-4 w-2 h-2 border-t border-r" style="border-color: var(--color-accent-soft);"></span>
+      <span aria-hidden="true" class="pointer-events-none absolute bottom-4 left-4 w-2 h-2 border-b border-l" style="border-color: var(--color-accent-soft);"></span>
+      <span aria-hidden="true" class="pointer-events-none absolute bottom-4 right-4 w-2 h-2 border-b border-r" style="border-color: var(--color-accent-soft);"></span>
+
       {{ content | safe }}
     </main>
     {% include "partials/footer.njk" %}

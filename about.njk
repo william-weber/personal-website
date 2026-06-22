@@ -4,20 +4,33 @@ title: About
 permalink: /about/
 ---
 
-<article class="space-y-6">
-  <h1 class="text-3xl font-semibold tracking-tight text-ink-100">{{ about.headline }}</h1>
+{% import "partials/section-marker.njk" as marker %}
 
-  <div class="space-y-4 leading-relaxed">
+<div class="pt-20 pb-16 max-w-[720px]">
+  {{ marker.sectionMarker("01", "about") }}
+
+  <h1
+    class="font-sans m-0 mb-12"
+    style="font-weight: 100; font-size: clamp(56px, 8vw, 96px); line-height: 0.95; letter-spacing: -0.035em; color: var(--color-fg-strong);"
+  >
+    Hi, I'm Will<span style="color: var(--color-accent);">.</span>
+  </h1>
+
+  <div class="flex flex-col gap-6 text-[15px] leading-[1.7]" style="font-weight: 300; color: var(--color-body);">
     {% for para in about.bio %}
-      <p>{{ para }}</p>
+      <p class="m-0">{{ para }}</p>
     {% endfor %}
   </div>
 
-  {% if about.links and about.links.length %}
-    <ul class="pt-4 flex flex-wrap gap-4 text-sm">
-      {% for link in about.links %}
-        <li><a href="{{ link.href }}" class="text-ink-300 hover:text-ink-200">{{ link.label }} →</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-</article>
+  <div
+    class="mt-14 grid gap-y-3.5 gap-x-8 font-mono text-[12px] tracking-[0.02em] p-7 border"
+    style="grid-template-columns: 100px 1fr; border-color: var(--color-hairline-strong);"
+  >
+    <div class="uppercase text-[10.5px]" style="color: var(--color-faint); letter-spacing: 0.1em;">since</div>
+    <div style="color: var(--color-body);">2004</div>
+    <div class="uppercase text-[10.5px]" style="color: var(--color-faint); letter-spacing: 0.1em;">stack</div>
+    <div style="color: var(--color-body);">whatever the question wants</div>
+    <div class="uppercase text-[10.5px]" style="color: var(--color-faint); letter-spacing: 0.1em;">elsewhere</div>
+    <div><a href="{{ site.footer.github }}" style="color: var(--color-accent);">github.com/william-weber →</a></div>
+  </div>
+</div>

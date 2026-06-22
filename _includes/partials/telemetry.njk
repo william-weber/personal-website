@@ -1,0 +1,40 @@
+<div
+  class="px-8 h-7 flex items-center justify-between font-mono text-[10.5px] font-normal tracking-[0.04em] uppercase border-b"
+  style="border-color: var(--color-hairline); color: var(--color-telemetry);"
+>
+  <div class="flex items-center gap-5">
+    <span class="inline-flex items-center gap-2">
+      <span
+        class="pulse-soft inline-block w-1.5 h-1.5 rounded-full"
+        style="background: var(--color-status-online); box-shadow: 0 0 8px rgba(92,242,166,0.6);"
+      ></span>
+      <span style="color: var(--color-muted);">node.online</span>
+    </span>
+    <span class="opacity-60">·</span>
+    <span>{{ site.telemetry.coordinates }}</span>
+  </div>
+  <div class="flex items-center gap-5">
+    <span>{{ site.telemetry.version }}</span>
+    <span class="opacity-60">·</span>
+    <span id="ww-clock">2026.06.21 / 14:22:08 utc</span>
+  </div>
+</div>
+<script>
+  (function () {
+    var el = document.getElementById("ww-clock");
+    if (!el) return;
+    function pad(n) { return n < 10 ? "0" + n : "" + n; }
+    function tick() {
+      var d = new Date();
+      var y = d.getUTCFullYear();
+      var mo = pad(d.getUTCMonth() + 1);
+      var da = pad(d.getUTCDate());
+      var h = pad(d.getUTCHours());
+      var mi = pad(d.getUTCMinutes());
+      var s = pad(d.getUTCSeconds());
+      el.textContent = y + "." + mo + "." + da + " / " + h + ":" + mi + ":" + s + " utc";
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>

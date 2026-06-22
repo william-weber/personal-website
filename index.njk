@@ -3,16 +3,81 @@ layout: layouts/base.njk
 title: Home
 ---
 
-<section class="space-y-6">
-  <h1 class="text-4xl md:text-5xl font-semibold tracking-tight text-ink-100">
-    {{ site.title }}
+{% import "partials/section-marker.njk" as marker %}
+
+<div class="pt-20 pb-16">
+  {{ marker.sectionMarker("00", "home") }}
+
+  <h1
+    class="font-sans m-0"
+    style="font-weight: 100; font-size: clamp(72px, 11vw, 156px); line-height: 0.92; letter-spacing: -0.04em; color: var(--color-fg-strong);"
+  >
+    Will<br/>Weber<span style="color: var(--color-accent);">.</span>
   </h1>
-  <p class="text-lg text-[var(--color-muted)]">
-    {{ site.tagline }}
-  </p>
-  <div class="pt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
-    {% for item in site.nav %}
-      <a href="{{ item.href }}" class="text-ink-300 hover:text-ink-200">{{ item.label }} →</a>
+
+  <div
+    class="mt-9 font-mono text-[13px] font-normal tracking-[0.04em] lowercase flex items-center gap-3.5 flex-wrap"
+    style="color: var(--color-muted);"
+  >
+    <span>programmer</span>
+    <span style="color: var(--color-faint);">/</span>
+    <span>tinkerer</span>
+    <span style="color: var(--color-faint);">/</span>
+    <span>occasional astrologer</span>
+  </div>
+
+  <div class="mt-16 mb-10 flex items-center gap-3">
+    <span class="w-1.5 h-1.5 inline-block" style="border: 1px solid var(--color-accent-soft);"></span>
+    <span class="flex-1 h-px" style="background: var(--color-hairline-strong);"></span>
+    <span class="font-mono text-[10px] tracking-[0.14em] uppercase" style="color: var(--color-faint);">contents · 03 sections</span>
+    <span class="flex-1 h-px" style="background: var(--color-hairline-strong);"></span>
+    <span class="w-1.5 h-1.5 inline-block" style="border: 1px solid var(--color-accent-soft);"></span>
+  </div>
+
+  {% set cards = [
+    { href: "/about/",       index: "01", label: "read",      title: "About",       blurb: "A short bio. What I'm interested in, where I've been, what I'm chasing.", meta: "since 2004" },
+    { href: "/experiments/", index: "02", label: "browse",    title: "Experiments", blurb: "Small, finished-ish things. Generative visuals, ai prompts, play.",        meta: "02 sets" },
+    { href: "/projects/",    index: "03", label: "in flight", title: "Projects",    blurb: "Bigger work, in progress. Detailed pages as each settles.",                meta: "02 active" }
+  ] %}
+
+  <div
+    class="grid grid-cols-1 md:grid-cols-3 border"
+    style="gap: 1px; background: var(--color-hairline); border-color: var(--color-hairline);"
+  >
+    {% for card in cards %}
+      <a
+        href="{{ card.href }}"
+        class="ww-card group flex flex-col min-h-[200px] gap-4 transition-colors duration-150"
+        style="background: rgba(12,22,56,0.6); padding: 32px 28px;"
+      >
+        <div class="flex justify-between items-start">
+          <span class="font-mono text-[10.5px] tracking-[0.10em]" style="color: var(--color-accent);">/ {{ card.index }}</span>
+          <span class="font-mono text-[10px] tracking-[0.10em] uppercase" style="color: var(--color-faint);">{{ card.label }}</span>
+        </div>
+        <div class="flex-1">
+          <div class="font-sans text-[22px] mb-2" style="font-weight: 200; letter-spacing: -0.01em; color: var(--color-fg-strong);">{{ card.title }}</div>
+          <div class="text-[12.5px] leading-[1.55]" style="color: var(--color-muted);">{{ card.blurb }}</div>
+        </div>
+        <div class="flex justify-between items-center font-mono text-[10px] tracking-[0.08em] uppercase" style="color: var(--color-faint);">
+          <span>{{ card.meta }}</span>
+          <span class="ww-card-arrow transition-all duration-150 opacity-60" style="color: var(--color-accent);">→</span>
+        </div>
+      </a>
     {% endfor %}
   </div>
-</section>
+
+  <div
+    class="mt-14 flex items-start gap-8 py-5 border-t border-b"
+    style="border-color: var(--color-hairline);"
+  >
+    <div
+      class="font-mono text-[10.5px] tracking-[0.12em] uppercase min-w-[120px] pt-0.5"
+      style="color: var(--color-accent);"
+    >
+      <span class="inline-block w-1.5 h-1.5 mr-2 align-middle" style="background: var(--color-accent);"></span>now
+    </div>
+    <div class="flex-1 text-[13.5px] leading-[1.7]" style="color: var(--color-body); font-weight: 300;">
+      Building <span style="color: var(--color-fg-strong);">Auspicious Times</span> — an algorithmic assistant for choosing astrologically auspicious moments. Reading more than writing. Sitting in the sun.
+    </div>
+  </div>
+</div>
