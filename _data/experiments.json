@@ -12,7 +12,13 @@
       "slug": "code-art",
       "title": "Algorithmic Visuals",
       "blurb": "Cellular automata, reaction-diffusion, and other small visual algorithms.",
-      "items": []
+      "items": [
+        {
+          "title": "Conway",
+          "note": "Conway's Game of Life",
+          "href": "https://conway.taj-tek.workers.dev"
+        }
+      ]
     }
   ]
 }

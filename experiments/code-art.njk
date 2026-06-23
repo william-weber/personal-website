@@ -26,21 +26,34 @@ permalink: /experiments/code-art/
   {% if section.items and section.items.length %}
     <div class="flex flex-col border-t" style="border-color: var(--color-hairline-strong);">
       {% for item in section.items %}
-        <div
-          class="ww-row grid items-center gap-6 py-7 border-b"
-          style="grid-template-columns: 60px 1fr 24px; border-color: var(--color-hairline-strong);"
-        >
-          <span class="font-mono text-[11px] tracking-[0.12em]" style="color: var(--color-accent);">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
-          <div>
-            <div class="font-sans text-[20px] mb-1.5" style="font-weight: 200; color: var(--color-fg-strong);">{{ item.title }}</div>
-            {% if item.note %}<div class="text-[13px]" style="color: var(--color-muted);">{{ item.note }}</div>{% endif %}
-          </div>
-          {% if item.href %}
-            <a href="{{ item.href }}" class="ww-card-arrow font-mono opacity-50" style="color: var(--color-accent);">→</a>
-          {% else %}
+        {% set isExternal = item.href and ("://" in item.href) %}
+        {% if item.href %}
+          <a
+            href="{{ item.href }}"
+            {% if isExternal %}target="_blank" rel="noopener"{% endif %}
+            class="ww-row grid items-center gap-6 py-7 border-b"
+            style="grid-template-columns: 60px 1fr 24px; border-color: var(--color-hairline-strong);"
+          >
+            <span class="font-mono text-[11px] tracking-[0.12em]" style="color: var(--color-accent);">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+            <div>
+              <div class="font-sans text-[20px] mb-1.5" style="font-weight: 200; color: var(--color-fg-strong);">{{ item.title }}</div>
+              {% if item.note %}<div class="text-[13px]" style="color: var(--color-muted);">{{ item.note }}</div>{% endif %}
+            </div>
+            <span class="ww-card-arrow font-mono opacity-50" style="color: var(--color-accent);">{% if isExternal %}↗{% else %}→{% endif %}</span>
+          </a>
+        {% else %}
+          <div
+            class="ww-row grid items-center gap-6 py-7 border-b"
+            style="grid-template-columns: 60px 1fr 24px; border-color: var(--color-hairline-strong);"
+          >
+            <span class="font-mono text-[11px] tracking-[0.12em]" style="color: var(--color-accent);">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+            <div>
+              <div class="font-sans text-[20px] mb-1.5" style="font-weight: 200; color: var(--color-fg-strong);">{{ item.title }}</div>
+              {% if item.note %}<div class="text-[13px]" style="color: var(--color-muted);">{{ item.note }}</div>{% endif %}
+            </div>
             <span></span>
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
       {% endfor %}
     </div>
   {% else %}

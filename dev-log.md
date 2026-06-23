@@ -103,3 +103,25 @@ Commits: `8d68838` (initial dev log), plus this restructure.
   deploy commands), pointing here for history.
 - Seeded file-based Claude Code memory with a user-profile note (local to this
   machine, separate from the Claude desktop app's account memory).
+
+### 2026-06-23 — First real Experiment surfaced (Conway), build fix
+
+Added the first published experiment to the site: **Conway** (Conway's Game of
+Life) under Experiments → Algorithmic Visuals (`code-art`).
+
+- **Decoupling decision.** Each experiment stays in its own repo with its own
+  history and its own deploy; this site only holds a *catalog entry* that links
+  out. Conway is deployed independently as a Cloudflare Worker
+  (`conway.taj-tek.workers.dev`); we link to it rather than vendoring code.
+  Rejected git submodules (couples the build) and copying built assets (artifact
+  duplication / drift). The "content lives in JSON" convention makes this a pure
+  `_data/experiments.json` edit — added one item to the `code-art` section.
+- **Template upgrade** (`experiments/code-art.njk`): item rows are now fully
+  clickable `<a>` rows (matching the index/ai-art pages) instead of just the
+  arrow. External links (detected via `"://" in item.href`) open in a new tab
+  with `target="_blank" rel="noopener"` and show a `↗` marker; internal links
+  keep `→`. The no-`href` fallback row is preserved.
+- **Build fix.** `CLAUDE.md` and `dev-log.md` were being picked up by Eleventy as
+  Nunjucks templates and broke the build on the literal `{% include ... with %}`
+  text inside them (pre-existing, since commit `cca7678`). Added both to
+  `.eleventyignore` alongside `README.md`. Build is green again (6 files).
