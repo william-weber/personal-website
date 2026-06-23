@@ -9,12 +9,15 @@
     "eleventy:dev": "eleventy --serve",
     "eleventy:build": "eleventy",
     "dev": "npm run css:build && concurrently -n css,11ty -c blue,magenta \"npm:css:dev\" \"npm:eleventy:dev\"",
-    "build": "npm run css:build && npm run eleventy:build"
+    "build": "npm run css:build && npm run eleventy:build",
+    "deploy": "npm run eleventy:build && wrangler deploy",
+    "preview": "npm run eleventy:build && wrangler dev"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@tailwindcss/cli": "^4.0.0",
     "concurrently": "^9.0.0",
-    "tailwindcss": "^4.0.0"
+    "tailwindcss": "^4.0.0",
+    "wrangler": "^4.104.0"
   }
 }
